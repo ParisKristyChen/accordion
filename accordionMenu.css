@@ -1,0 +1,102 @@
+:root {
+  --light-color: #777;
+}
+
+
+* {
+  font-family: "Roboto", "Lato";
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff
+  url("https://images.unsplash.com/photo-1656231877753-1658b926365f?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc4MDM2MDA&ixlib=rb-1.2.1&q=80")
+    no-repeat fixed center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.accordion { /* accordion 手风琴样式 .的意思是html链接css用的 */
+  width: 100%;
+  border: none;
+  background-color: rgba(238, 238, 238, 0.7);
+  color: #444;
+  padding: 15px;
+  cursor: pointer;  
+  /* 光标：小手 */
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  display: flex;
+  /* 白色部分文字靠左 */
+  justify-content: space-between;
+  /* 白色部分文字靠两边 */
+  margin-top: 10px;
+  /* 手风琴之间有距离 */
+}
+
+.accordion:hover { 
+  /* hover 徘徊 */
+  box-shadow: 0 0 3px var(--light-color);
+  transform: scale(101%);
+  /* 转换：尺寸比例 */
+  transition: transform 0.5s;
+  /* 过渡：转换 */
+}
+
+.accordion.active:hover {
+  background-color: #ccc;
+  box-shadow: none;
+  transform: none;
+}
+
+.accordion::after {
+  /* after指在按钮的最右边，before在左边，related 连带相关的箭头 */
+  content: "\00276F";
+  counter-reset: var(--light-color);
+  transform: rotate(90deg);
+  /* rotate 旋转箭头的角度 */
+  float:right;
+  margin-left: 15px;
+  /* 以上两个可以删除 */
+  transition: all 0.5s;
+}
+.active.accordion {
+  border-radius: 10px 10px 0 0;
+  /* 按箭头打开后白色部分下面没有半圆 */
+}
+
+.active::after {
+  content: "\00276F";
+  transform: rotate(270deg);
+}
+
+.panel {
+  /* panel 控制板 */
+  color:#fff;
+  overflow:hidden;
+  /* 溢出：隐藏 */
+  padding: 0 15px;
+  border-radius: 0 0 10px 10px;
+  /* 有颜色的控制板打开后上边部分没有半圆 */
+  max-height: 0;
+  /* 关闭的时候控制板消失没有高度 */
+}
+
+.panel::selection {
+  /* 在控制板里任何文字被选中会变色 */
+  background-color: #009d41;
+  color: #444;
+}
+.panel-1 {
+  background-color: rgba(211, 0, 0, 0.7);
+}
+.panel-2 {
+  background-color: rgba(223, 89, 1, 0.7);
+}
+.panel-3 {
+  background-color: rgba(214, 204, 0, 0.7);
+}
+.panel-4 {
+  background-color: rgba(0, 157, 65, 0.7);
+}
